@@ -2,10 +2,12 @@
 
 window.onload = function(){
 
-	var boo = true;
-	var MyArr = [];
+	
+	
 	var i = 0;
-	var ArrayAdder ="";
+	var a = "a";
+	var A = "A";
+	var Remade;
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
@@ -13,17 +15,49 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
-	MyArr = str.split("");
-	console.log(MyArr[0]);
-	for (i; i < MyArr.length; i +=1)								// INTE KLAR! VETTI FAN VARFÖR DET ITNE FUNGERAR! :<
+	Remade = str;
+	
+	console.log(str.length);
+	console.log(Remade.charAt(3).toUpperCase())
+	
+	for (i; i < str.length; i += 1)							//funkar ej.
 	{
-		if (MyArr[i] === str.charAt(i).toUpperCase)
-		{	MyArr[i].toLowerCase;	}
-		else
-		{	MyArr[i].toUpperCase;	}
+		//	var character = str.charAt(i);
+		if (Remade.charAt(i) == Remade.charAt(i).toUpperCase() )
+		{	Remade.charAt(i).toLowerCase();	}
+		
+		else 
+		{	Remade.charAt(i).toUpperCase();	}
+		console.log(Remade.charAt(i));
 		
 	}
+	
+	Remade = Remade.split("a").join("#"); // str.split(sök).join(utbyte);
+	Remade = Remade.split("A").join("#");
+	
+	return Remade;
+	
+	
+	/*
+	var MyArr = [];
+	MyArr = str.split(""); ////Denna versionen funkar att byta ut små till stora bokstäver.
+	
+	for (i; i < MyArr.length; i +=1)							
+	{
+		
+		if (MyArr[i] === MyArr[i].toUpperCase() )
+		{	MyArr[i] = MyArr[i].toLowerCase();	}
+		
+		else 
+		{	MyArr[i] = MyArr[i].toUpperCase();	}
+		
+		
+	}
+	
+
 	return MyArr;
+	
+	*/
 	
 		/*ArrayAdder = str.charAt(i);
 		
