@@ -2,14 +2,44 @@
 
 window.onload = function(){
 
+	var boo = true;
+	var MyArr = [];
+	var i = 0;
+	var ArrayAdder ="";
+
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
+	MyArr = str.split("");
+	console.log(MyArr[0]);
+	for (i; i < MyArr.length; i +=1)								// INTE KLAR! VETTI FAN VARFÖR DET ITNE FUNGERAR! :<
+	{
+		if (MyArr[i] === str.charAt(i).toUpperCase)
+		{	MyArr[i].toLowerCase;	}
+		else
+		{	MyArr[i].toUpperCase;	}
+		
+	}
+	return MyArr;
+	
+		/*ArrayAdder = str.charAt(i);
+		
+		if (ArrayAdder === ArrayAdder.toUpperCase())
+		{	ArrayAdder = ArrayAdder.toLowerCase();	}
+		else
+		{	ArrayAdder = ArrayAdder.toUpperCase();	}
+		
+		if (ArrayAdder === "a" || "A" || "å" || "Å" || "ä" || "Ä" || "ö" || "Ö")
+		{	ArrayAdder = "#";	}
+		
+		MyArr.add(ArrayAdder);
+		
+	
 
-
+	return ArrayAdder;*/
 
 
 

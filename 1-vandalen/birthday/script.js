@@ -5,11 +5,48 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
-
-
-			// Din kod här.
-
-
+		var now = new Date();
+		var Birthday = new Date(date);
+		var AmountOfDays = 0;
+		var SameYear = new Date();
+		var days = 0;
+		var month = 0;
+		var year = 0;
+		
+		AmountOfDays = (Birthday.getTime() - now.getTime())/(1000*60*60*24);
+		
+		days = (Birthday.getDate() - now.getDate());
+		month = (Birthday.getMonth() - now.getMonth());
+		year = (Birthday.getFullYear() - now.getFullYear());
+		
+		console.log(date);
+		
+		if (date === "")
+		{ 
+			throw new Error("FEL! Var vänlig och ange ditt födelse datum.")
+		}
+		
+			if (Birthday.getTime() - now.getTime() >= 0)
+			{
+				if (days === +0 && month === +0 && year === +0)
+				{
+					return 0;
+				}
+				if (days === +1 && month === +0 && year === +0)
+				{
+					return 1;
+				}
+				return AmountOfDays;
+			}
+			
+			else
+			{
+				SameYear.setFullYear(Birthday.getFullYear()-1);
+				return (Birthday.getTime() - SameYear.getTime())/(1000*60*60*24);
+			}
+		
+		
+		
 
 
 	};
@@ -28,7 +65,7 @@ window.onload = function(){
 		p.classList.remove( "error");
 
 		try {
-			var answer = birthday(input.value) // Läser in texten från textrutan och skickar till funktionen "convertString"
+			var answer = birthday(input.value); // Läser in texten från textrutan och skickar till funktionen "convertString"
 			var message;
 			switch (answer){
 				case 0: message = "Grattis på födelsedagen!";
