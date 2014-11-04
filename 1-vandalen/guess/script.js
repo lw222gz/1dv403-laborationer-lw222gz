@@ -2,7 +2,10 @@
 
 window.onload = function(){
 	
-	var secret = 50; // Detta tal behöver bytas ut mot ett slumpat tal.
+	var guesses = 0;
+	var check;
+	
+	var secret = Math.floor( Math.random() * (100-1)+1) + 1; Math.floor( Math.random() * 100)+1; // Detta tal behöver bytas ut mot ett slumpat tal.
 	
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var guess = function(number){
@@ -10,7 +13,33 @@ window.onload = function(){
 		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 			
 		// Plats för förändring.
-
+		
+		check = isNaN(number);
+		
+		if (check === false)
+		{
+		 	if (+number === secret)
+		 	{
+		 		guesses += 1;
+		 		return [true, "Grattis du vann! Det hemliga talet var "+secret+" och du behövde "+guesses+" gissningar för att lista ut det."];
+		 	}
+		 	if (+number < 0 || +number > 100)
+		 	{
+		 		return [false, "Fel, du måste gissa på ett tal emellan 1-100."];
+		 	}
+		 	if (+number > secret)
+		 	{
+		 		guesses += 1;
+		 		return [false, "Fel, det du gissade på var för högt. Du är på gissning: "+guesses+"."];
+		 	}
+		 	if (+number < secret)
+		 	{
+		 		guesses += 1;
+				return [false, "Fel, det du gissade på var för lågt. Du är på gissning: "+guesses+"."];		 		
+		 	}
+		}
+		else
+		{ return [false, "FEL! Du måste ange ett hel tal i rätt format."]; }
 
 		// Returnera exempelvis: 
 		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
