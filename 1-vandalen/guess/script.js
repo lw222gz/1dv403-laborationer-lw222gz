@@ -5,7 +5,7 @@ window.onload = function(){
 	var guesses = 0;
 	var check;
 	
-	var secret = Math.floor( Math.random() * (100-1)+1) + 1; Math.floor( Math.random() * 100)+1; // Detta tal behöver bytas ut mot ett slumpat tal.
+	var secret = Math.floor( Math.random() * (100-1)+1) + 1;  // Detta tal behöver bytas ut mot ett slumpat tal.
 	
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var guess = function(number){
@@ -14,9 +14,9 @@ window.onload = function(){
 			
 		// Plats för förändring.
 		
-		check = isNaN(number);
 		
-		if (check === false)
+		
+		if (isNaN(number) === false)
 		{
 		 	if (+number === secret)
 		 	{

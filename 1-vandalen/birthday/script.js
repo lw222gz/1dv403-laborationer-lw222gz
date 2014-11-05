@@ -15,24 +15,26 @@ window.onload = function(){
 		
 		AmountOfDays = (Birthday.getTime() - now.getTime())/(1000*60*60*24);
 		
+		
+		
 		days = (Birthday.getDate() - now.getDate());
 		month = (Birthday.getMonth() - now.getMonth());
 		year = (Birthday.getFullYear() - now.getFullYear());
 		
-		console.log(date);
+		console.log((Birthday.getTime() - now.getTime())/(1000*60*60*24));
 		
 		if (date === "")
 		{ 
-			throw new Error("FEL! Var vänlig och ange ditt födelse datum.")
+			throw new Error("FEL! Var vänlig och ange ditt födelse datum.");
 		}
 		
-			if (Birthday.getTime() - now.getTime() >= 0)
+			if ((Birthday.getTime() - now.getTime())/(1000*60*60*24) >= -1)
 			{
-				if (days === +0 && month === +0 && year === +0)
+				if (days === 0 && month === 0 && year === 0)
 				{
 					return 0;
 				}
-				if (days === +1 && month === +0 && year === +0)
+				if (days === 1 && month === 0 && year === 0)
 				{
 					return 1;
 				}
