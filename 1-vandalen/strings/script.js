@@ -5,8 +5,6 @@ window.onload = function(){
 	
 	
 	var i = 0;
-	var a = "a";
-	var A = "A";
 	var Remade;
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
@@ -17,66 +15,38 @@ window.onload = function(){
 	
 	Remade = str;
 	
-	console.log(str.length);
-	console.log(Remade.charAt(3).toUpperCase())
+
 	
-	for (i; i < str.length; i += 1)							//funkar ej.
+	var MyArr = [];
+	MyArr = str.split(""); // problem, vägrar att ta 2 saker i rad, funkar första gången man skvier in något men inte andra.
+	
+	console.log(MyArr.length)
+	
+	for (i; i < MyArr.length; i += 1)							
 	{
-		//	var character = str.charAt(i);
-		if (Remade.charAt(i) == Remade.charAt(i).toUpperCase() )
-		{	Remade.charAt(i).toLowerCase();	}
+		if (MyArr[i] === " ")
+		{ 
+			MyArr[i] = " "; 
+		}
+		else
+		{
+			if (MyArr[i] === MyArr[i].toUpperCase() )
+			{	MyArr[i] = MyArr[i].toLowerCase();	}
 		
-		else 
-		{	Remade.charAt(i).toUpperCase();	}
-		console.log(Remade.charAt(i));
+			else 
+			{	MyArr[i] = MyArr[i].toUpperCase();	}
+		}
 		
 	}
 	
+	
+	Remade = MyArr.toString();
+	Remade = Remade.split(",").join("");
 	Remade = Remade.split("a").join("#"); // str.split(sök).join(utbyte);
 	Remade = Remade.split("A").join("#");
 	
 	return Remade;
 	
-	
-	/*
-	var MyArr = [];
-	MyArr = str.split(""); ////Denna versionen funkar att byta ut små till stora bokstäver.
-	
-	for (i; i < MyArr.length; i +=1)							
-	{
-		
-		if (MyArr[i] === MyArr[i].toUpperCase() )
-		{	MyArr[i] = MyArr[i].toLowerCase();	}
-		
-		else 
-		{	MyArr[i] = MyArr[i].toUpperCase();	}
-		
-		
-	}
-	
-
-	return MyArr;
-	
-	*/
-	
-		/*ArrayAdder = str.charAt(i);
-		
-		if (ArrayAdder === ArrayAdder.toUpperCase())
-		{	ArrayAdder = ArrayAdder.toLowerCase();	}
-		else
-		{	ArrayAdder = ArrayAdder.toUpperCase();	}
-		
-		if (ArrayAdder === "a" || "A" || "å" || "Å" || "ä" || "Ä" || "ö" || "Ö")
-		{	ArrayAdder = "#";	}
-		
-		MyArr.add(ArrayAdder);
-		
-	
-
-	return ArrayAdder;*/
-
-
-
 
 	};
 	// ------------------------------------------------------------------------------
