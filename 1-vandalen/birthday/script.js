@@ -17,13 +17,11 @@ window.onload = function(){
 		
 		AmountOfDays = (Birthday.getTime() - now.getTime())/(1000*60*60*24);
 		
-		console.log(Birthday.getFullYear());
+
 		
 		days = Birthday.getDate() - now.getDate();
 		month = Birthday.getMonth() - now.getMonth();
-		year = Birthday.getFullYear() - now.getFullYear();
 		
-		console.log((Birthday.getTime() - now.getTime())/(1000*60*60*24));
 		
 		if (date === "")
 		{ 
@@ -32,11 +30,11 @@ window.onload = function(){
 		
 			if ((Birthday.getTime() - now.getTime())/(1000*60*60*24) >= -1)
 			{
-				if (days === 0 && month === 0 && year === 0)
+				if (days === 0 && month === 0)
 				{
 					return 0;
 				}
-				if (days === 1 && month === 0 && year === 0)
+				if (days === 1 && month === 0)
 				{
 					return 1;
 				}
