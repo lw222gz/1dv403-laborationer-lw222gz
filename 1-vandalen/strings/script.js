@@ -4,8 +4,7 @@ window.onload = function(){
 
 	
 	
-	var i = 0;
-	var Remade;
+	
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
@@ -13,39 +12,53 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
-	Remade = str;
 	
-
+	
 	
 	var MyArr = [];
 	MyArr = str.split(""); // problem, vägrar att ta 2 saker i rad, funkar första gången man skvier in något men inte andra.
 	
-	console.log(MyArr.length)
 	
-	for (i; i < MyArr.length; i += 1)							
+	
+	
+	if (str === "")
 	{
-		if (MyArr[i] === " ")
-		{ 
-			MyArr[i] = " "; 
-		}
-		else
-		{
+		throw new Error("Var vänlig och skriv något i rutan.")
+	}
+	
+	/*
+	for (i; i < MyArr.length; i += 1)			//funkar EJ!				
+	{
+
+			if (str.charAt(i) === str.charAt(i).toUpperCase() )
+			{	str.charAt(i).toLowerCase();	}
+		
+			else 
+			{	str.charAt(i).toUpperCase();	}
+		
+		
+	}
+	*/
+	
+	for (var i = 0; i < str.length; i += 1)							
+	{
+		
 			if (MyArr[i] === MyArr[i].toUpperCase() )
 			{	MyArr[i] = MyArr[i].toLowerCase();	}
 		
 			else 
 			{	MyArr[i] = MyArr[i].toUpperCase();	}
-		}
+		
 		
 	}
 	
 	
-	Remade = MyArr.toString();
-	Remade = Remade.split(",").join("");
-	Remade = Remade.split("a").join("#"); // str.split(sök).join(utbyte);
-	Remade = Remade.split("A").join("#");
+	str = MyArr.toString();
+	str = str.split(",").join("");
+	str = str.split("a").join("#"); // str.split(sök).join(utbyte);
+	str = str.split("A").join("#");
 	
-	return Remade;
+	return [str];
 	
 
 	};

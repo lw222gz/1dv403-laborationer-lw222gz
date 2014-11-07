@@ -3,7 +3,6 @@
 window.onload = function(){
 	
 	var guesses = 0;
-	var check;
 	
 	var secret = Math.floor( Math.random() * (100-1)+1) + 1;  // Detta tal behöver bytas ut mot ett slumpat tal.
 	
@@ -13,8 +12,8 @@ window.onload = function(){
 		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 			
 		// Plats för förändring.
-		
-		
+	
+	
 		
 		if (isNaN(number) === false)
 		{
@@ -46,6 +45,7 @@ window.onload = function(){
 		// [false, "Det hemliga talet är högre!"]
 		// [false, "Det hemliga talet är lägre!"]
 		// [false, "Talet är utanför intervallet 0 - 100"]		
+	
 	};
 	
 	// ------------------------------------------------------------------------------

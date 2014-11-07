@@ -13,13 +13,15 @@ window.onload = function(){
 		var month = 0;
 		var year = 0;
 		
+		Birthday.setFullYear(now.getFullYear());
+		
 		AmountOfDays = (Birthday.getTime() - now.getTime())/(1000*60*60*24);
 		
+		console.log(Birthday.getFullYear());
 		
-		
-		days = (Birthday.getDate() - now.getDate());
-		month = (Birthday.getMonth() - now.getMonth());
-		year = (Birthday.getFullYear() - now.getFullYear());
+		days = Birthday.getDate() - now.getDate();
+		month = Birthday.getMonth() - now.getMonth();
+		year = Birthday.getFullYear() - now.getFullYear();
 		
 		console.log((Birthday.getTime() - now.getTime())/(1000*60*60*24));
 		
