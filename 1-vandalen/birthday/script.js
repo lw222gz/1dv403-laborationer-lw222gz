@@ -17,7 +17,6 @@ window.onload = function(){
 		
 		AmountOfDays = (Birthday.getTime() - now.getTime())/(1000*60*60*24);
 		
-
 		
 		days = Birthday.getDate() - now.getDate();
 		month = Birthday.getMonth() - now.getMonth();
@@ -28,7 +27,7 @@ window.onload = function(){
 			throw new Error("FEL! Var vänlig och ange ditt födelse datum.");
 		}
 		
-			if ((Birthday.getTime() - now.getTime())/(1000*60*60*24) >= -1)
+			if (AmountOfDays >= -1)
 			{
 				if (days === 0 && month === 0)
 				{
@@ -38,13 +37,14 @@ window.onload = function(){
 				{
 					return 1;
 				}
-				return AmountOfDays;
+				console.log(AmountOfDays);
+				return (Math.round(AmountOfDays))+1; // funkar detta innan klockan har slagit 12:00??
 			}
 			
 			else
 			{
-				SameYear.setFullYear(Birthday.getFullYear()-1);
-				return (Birthday.getTime() - SameYear.getTime())/(1000*60*60*24);
+				now.setFullYear(Birthday.getFullYear()-1);
+				return Math.floor((Birthday.getTime() - now.getTime())/(1000*60*60*24));
 			}
 		
 		

@@ -2,9 +2,6 @@
 
 window.onload = function(){
 
-	
-	
-	
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
@@ -13,32 +10,15 @@ window.onload = function(){
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
 	
-	
-	
 	var MyArr = [];
-	MyArr = str.split(""); // problem, vägrar att ta 2 saker i rad, funkar första gången man skvier in något men inte andra.
-	
-	
+	MyArr = str.split(""); 
 	
 	
 	if (str === "")
 	{
-		throw new Error("Var vänlig och skriv något i rutan.")
+		throw new Error("Var vänlig och skriv något i rutan.");
 	}
 	
-	/*
-	for (i; i < MyArr.length; i += 1)			//funkar EJ!				
-	{
-
-			if (str.charAt(i) === str.charAt(i).toUpperCase() )
-			{	str.charAt(i).toLowerCase();	}
-		
-			else 
-			{	str.charAt(i).toUpperCase();	}
-		
-		
-	}
-	*/
 	
 	for (var i = 0; i < str.length; i += 1)							
 	{
