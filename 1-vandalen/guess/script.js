@@ -22,7 +22,7 @@ window.onload = function(){
 		 		guesses += 1;
 		 		return [true, "Grattis du vann! Det hemliga talet var "+secret+" och du behövde "+guesses+" gissningar för att lista ut det."];
 		 	}
-		 	if (+number < 0 || +number > 100)
+		 	if (+number < 1 || +number > 100)
 		 	{
 		 		return [false, "Fel, du måste gissa på ett tal emellan 1-100."];
 		 	}

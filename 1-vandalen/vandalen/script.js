@@ -12,7 +12,7 @@ var makePerson = function(persArr){
     var averageAge;
 	
 	
-	for (i = 0; i < persArr.length; i += 1) // klar och funkar.
+	for (i = 0; i < persArr.length; i += 1)
 	{
 	     NameArray[i] = persArr[i].name;
 	}
@@ -21,7 +21,6 @@ var makePerson = function(persArr){
 	names = NameArray.toString();
 	
 	names = names.split(",").join(", ");
-	console.log(names);
 	
 	for (i = 0; i < persArr.length; i += 1)
 	{
@@ -37,7 +36,7 @@ var makePerson = function(persArr){
 	
 	result = {minAge: minAge, maxAge: maxAge, averageAge: Math.round(averageAge), names: names};
 	
-    return result;
+	return result;
 }
 
 var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}]; //[{name: "Elite Lukké", age: 20}, {name:"Nagging Nancy", age: 66}, {name:"Knas Kalle", age: 34}, {name:"Happy Feet", age: 5}] [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}]

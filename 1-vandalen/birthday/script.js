@@ -8,15 +8,12 @@ window.onload = function(){
 		var now = new Date();
 		var Birthday = new Date(date);
 		var AmountOfDays = 0;
-		var SameYear = new Date();
 		var days = 0;
 		var month = 0;
-		var year = 0;
 		
 		Birthday.setFullYear(now.getFullYear());
 		
 		AmountOfDays = (Birthday.getTime() - now.getTime())/(1000*60*60*24);
-		
 		
 		days = Birthday.getDate() - now.getDate();
 		month = Birthday.getMonth() - now.getMonth();
@@ -38,13 +35,13 @@ window.onload = function(){
 					return 1;
 				}
 				console.log(AmountOfDays);
-				return (Math.round(AmountOfDays))+1; // funkar detta innan klockan har slagit 12:00??
+				return (Math.ceil(AmountOfDays));
 			}
 			
 			else
 			{
-				now.setFullYear(Birthday.getFullYear()-1);
-				return Math.floor((Birthday.getTime() - now.getTime())/(1000*60*60*24));
+				Birthday.setFullYear(Birthday.getFullYear()+1);
+				return Math.ceil((Birthday.getTime() - now.getTime())/(1000*60*60*24));
 			}
 		
 		
