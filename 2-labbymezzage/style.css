@@ -34,11 +34,7 @@ main
         width:650px;
     }
     
-#TextBlock
-{
-    
-    
-}
+
    
    
     
@@ -46,11 +42,36 @@ main
     float:right;
 }
 
+
+
+.DeletePicture
+{
+    width:24px;
+    height:24px;
+    position:absolute;
+    top:5px;
+    right:0;
+}
+
+.ClockPicture
+{
+    width:24px;
+    height:24px;
+    position:absolute;
+    top:5px;
+    right:30px;
+}
+    
+
+
 .text
 {
+    text-indent:5px;
+    font-family:verdana;
+    font-size:30px;
     border:1px solid black;
     background-color:#6EB0FF;
     width:auto;
     height:auto;
-    
+    position:relative;
 }

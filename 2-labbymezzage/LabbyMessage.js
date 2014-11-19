@@ -4,11 +4,13 @@
 window.onload = function(){
     
     var messages = [];
-    //var img = new Image();    test att länka in img INTE KLAR!
-    //img.src="DeleteRed.png";
+    
+    
+    
     var j = 0;
     var i = 0;
     var myObj = {};
+    
     var submit = document.querySelector("#send");
     var text = document.getElementById("textInput");
     var div = document.getElementById("text");
@@ -21,18 +23,26 @@ window.onload = function(){
         
         renderMessage(messages.length-1);
         });
+
         
     var renderMessage = function(index){
         var text = document.createElement("p");
         text.className = "text";
-        var img = document.createElement("IMG"); // test att länka in img INTE KLAR
-        img.setAttribute("src", "DeleteRed.png");
         
+        var img = document.createElement("img");
+        var clockimg = document.createElement("img");
         
-        text.appendChild(img);
+        img.className = "DeletePicture";
+        img.src = "DeleteRed.png";
+        
+        clockimg.className = "ClockPicture";
+        clockimg.src = "Clock.png";
+    
         
         text.innerHTML = messages[index].getHTMLText();
         div.appendChild(text);
+        text.appendChild(img);
+        text.appendChild(clockimg);
     }    
         
     
@@ -48,6 +58,4 @@ window.onload = function(){
         
     }
     
-    
-
 }
