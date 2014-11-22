@@ -38,7 +38,12 @@ window.onload = function(){
         }
         });
         
-    Enter.addEventListener("keydown", function(e){ //funkar ej
+    Enter.addEventListener("keydown", function(e){ 
+        
+        
+        if (e.keyCode == 13 && document.getElementById("textInput").value === "")
+                {e.preventDefault()}
+        
         if(e.keyCode === 13 && !e.shiftKey && text.value !== "")
         
         {
@@ -108,6 +113,8 @@ window.onload = function(){
         
         text.innerHTML = messages[index].getHTMLText();
         div.appendChild(text);
+        var element = document.getElementById("text");
+        element.scrollTop = element.scrollHeight;
         text.appendChild(img);
         text.appendChild(clockimg);
         text.appendChild(TimeShow); 
