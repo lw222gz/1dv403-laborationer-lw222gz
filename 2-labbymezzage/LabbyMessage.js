@@ -95,6 +95,10 @@ window.onload = function(){
                 {
                     Minutes = "0"+Minutes;       
                 }
+                if (Seconds < 10)
+                {
+                    Seconds = "0"+Seconds;
+                }
             alert("Inlägget skapades den "+day+"/"+month+" år "+year+ " klockan " +Hour+":"+Minutes+":"+Seconds)
         })
         

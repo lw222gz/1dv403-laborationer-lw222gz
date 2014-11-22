@@ -34,6 +34,10 @@ function Message(message, date){
        {
             Minutes = "0"+Minutes;       
        }
+       if (Seconds < 10)
+       {
+          Seconds = "0"+Seconds;
+       }
        
        return +Hour+":"+Minutes+":"+Seconds;
    }
