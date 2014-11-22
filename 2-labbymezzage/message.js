@@ -25,8 +25,17 @@ function Message(message, date){
        return this.getText().replace(/[\n\r]/g, "<br/>");
    }
    
-   Message.prototype.getDateText = function() {
+   Message.prototype.getDateText = function() { 
        
+       var Hour = this.getDate().getHours();
+       var Minutes = this.getDate().getMinutes();
+       var Seconds = this.getDate().getSeconds();
+       if (Minutes < 10)
+       {
+            Minutes = "0"+Minutes;       
+       }
+       
+       return +Hour+":"+Minutes+":"+Seconds;
    }
    
    
