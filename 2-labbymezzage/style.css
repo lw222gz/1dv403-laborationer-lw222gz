@@ -20,8 +20,7 @@ header
         font-size:45px;
         padding-top:50px;
         height:100px;
-        position:relative;
-        left:588.5px;
+        margin-left:30%;
         background-color:#2A406F;
         width:710px;
         text-align:center;
@@ -30,8 +29,7 @@ header
 main
     {
         padding:30px;
-        position:relative;
-        left:588.5px;
+        margin-left:30%;
         margin-top:30px;
         background-color:#354458;
         height:auto;

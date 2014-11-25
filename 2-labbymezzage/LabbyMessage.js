@@ -7,34 +7,30 @@ window.onload = function(){
     
     
     
-    var j = 0;
-    var i = 0;
+   
     var myObj = {};
-    
+    var i;
     var submit = document.querySelector("#send");
     var text = document.getElementById("textInput");
     var div = document.getElementById("text");
-    var Enter = document.getElementById("textInput")
-    
+    var Enter = document.getElementById("textInput");
+    var date;
 
-    
-    
-    
-    
-    
+  
     submit.addEventListener("click", function(e){
                                                                             // http://stackoverflow.com/questions/11921210/how-exactly-does-event-preventdefault-affect-the-dom vad e.preventdefault gör.
         if (text.value === "")
         {
-            e.preventdefault()
+            e.preventdefault();
         }
         else
         {
-        myObj = new Message(text.value, new Date());
+        date = new Date();
+        myObj = new Message(text.value, date);
         messages.push(myObj);
         
         renderMessage(messages.length-1);
-        RemoveText();
+        removeText();
         }
         });
         
@@ -48,11 +44,12 @@ window.onload = function(){
         
         {
             e.preventDefault()
-            myObj = new Message(text.value, new Date())
+            date = new Date();
+            myObj = new Message(text.value, date)
             messages.push(myObj);
                 
             renderMessage(messages.length-1)
-            RemoveText();
+            removeText();
         }
         
     }
@@ -60,8 +57,8 @@ window.onload = function(){
 
         
     var renderMessage = function(index){
-        ++j;
-        document.getElementById("AmountofMessages").innerHTML = "Antal meddelanden: "+j;
+        
+        document.getElementById("AmountofMessages").innerHTML = "Antal meddelanden: "+messages.length;
         
         var text = document.createElement("p");
         text.className = "text";
@@ -69,22 +66,20 @@ window.onload = function(){
         var img = document.createElement("img");
         var clockimg = document.createElement("img");
         
-        
-        
-        
         img.className = "DeletePicture";
         img.src = "DeleteRed.png";
         
         clockimg.className = "ClockPicture";
         clockimg.src = "Clock.png";
-        
+            
         img.addEventListener("click", function(e){
             if (confirm("Radera detta meddelande?"))
             { 
-                --j;
-                Remove(index);
-                text.parentNode.removeChild(text);
-                document.getElementById("AmountofMessages").innerHTML = "Antal meddelanden: "+j;
+                
+                //text.parentNode.removeChild(text);
+                messages.splice(index, 1);
+                renderMessages();
+                document.getElementById("AmountofMessages").innerHTML = "Antal meddelanden: "+messages.length;
             }
         }
         )
@@ -112,12 +107,13 @@ window.onload = function(){
         TimeShow.innerHTML = messages[index].getDateText();
         
         text.innerHTML = messages[index].getHTMLText();
-        div.appendChild(text);
+        
         var element = document.getElementById("text");
         element.scrollTop = element.scrollHeight;
         text.appendChild(img);
         text.appendChild(clockimg);
         text.appendChild(TimeShow); 
+        div.appendChild(text);
         
         
     }    
@@ -125,21 +121,18 @@ window.onload = function(){
     
     var renderMessages = function() {
         //tar bort all text
-        document.getElementById("#text").innerHTML = "";
+        div.innerHTML = "";
         
         // sätter dit alla igen.
-        for (i; i < messages.length; i += 1)
+        for (i = 0; i < messages.length; i += 1)
         {
             renderMessage(i);
         }
         
     }
-    var Remove = function(id)
-    {
-        messages.splice(id, 1);
-    }
     
-    var RemoveText = function(){
+    
+    var removeText = function(){
         document.getElementById("textInput").value="";
     }
 }
