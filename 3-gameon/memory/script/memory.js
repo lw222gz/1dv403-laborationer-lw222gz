@@ -22,7 +22,7 @@ window.onload = function(){
     var Tile15 = document.createElement("img");
     var Tile16 = document.createElement("img");
     
-    Tile1.src = "pics/0.png";
+    Tile1.src = "pics/0.png"; // den vill inte acceptera att jag använder setAllTiles() här?? varför??
     Tile2.src = "pics/0.png";
     Tile3.src = "pics/0.png";
     Tile4.src = "pics/0.png";
@@ -65,6 +65,7 @@ window.onload = function(){
     var SixteenTiles = document.getElementById("4x4");
     
     EightTiles.addEventListener("click", function(e){
+        setAllTiles();
         if (playboard.childNodes.length > 9)
         {
             clearBoard();
@@ -76,7 +77,7 @@ window.onload = function(){
     });
     SixteenTiles.addEventListener("click", function(e) {
         
-        
+        setAllTiles();
         
         picArray = RandomGenerator.getPictureArray(4,4);
         
@@ -210,5 +211,24 @@ window.onload = function(){
        playboard.removeChild(Tile14);
        playboard.removeChild(Tile15);
        playboard.removeChild(Tile16);
+    }
+    
+    var setAllTiles = function(){
+        Tile1.src = "pics/0.png";
+        Tile2.src = "pics/0.png";
+        Tile3.src = "pics/0.png";
+        Tile4.src = "pics/0.png";
+        Tile5.src = "pics/0.png";
+        Tile6.src = "pics/0.png";
+        Tile7.src = "pics/0.png";
+        Tile8.src = "pics/0.png";
+        Tile9.src = "pics/0.png";
+        Tile10.src = "pics/0.png";
+        Tile11.src = "pics/0.png";
+        Tile12.src = "pics/0.png";
+        Tile13.src = "pics/0.png";
+        Tile14.src = "pics/0.png";
+        Tile15.src = "pics/0.png";
+        Tile16.src = "pics/0.png";
     }
 }
