@@ -1,0 +1,85 @@
+#Board{
+    width:1000px;
+    height:1000px;
+    position:relative;
+    
+}
+
+.TopTilesMargin{
+    margin-left:24px;
+}
+
+.firstVerticalLine1{
+    position:absolute;
+    left:0px;
+    margin-top:48px;
+}
+
+.firstVerticalLine2{
+    position:absolute;
+    left:0px;
+    margin-top:96px;
+}
+
+.firstVerticalLine3{
+    position:absolute;
+    left:0px;
+    margin-top:144px;
+}
+
+
+.secondVerticlaLine1{
+    position:absolute;
+    left:48px;
+    margin-top:48px;
+}
+
+.secondVerticlaLine2{
+    position:absolute;
+    left:48px;
+    margin-top:96px;
+}
+
+.secondVerticlaLine3{
+    position:absolute;
+    left:48px;
+    margin-top:144px;
+}
+
+
+.thridVerticalLine1{
+    position:absolute;
+    left:96px;
+    margin-top:48px;
+}
+
+.thridVerticalLine2{
+    position:absolute;
+    left:96px;
+    margin-top:96px;
+}
+
+.thridVerticalLine3{
+    position:absolute;
+    left:96px;
+    margin-top:144px;
+}
+
+
+.fourthVerticalLine1{
+    position:absolute;
+    left:144px;
+    margin-top:48px;
+}
+
+.fourthVerticalLine2{
+    position:absolute;
+    left:144px;
+    margin-top:96px;
+}
+
+.fourthVerticalLine3{
+    position:absolute;
+    left:144px;
+    margin-top:144px;
+}
