@@ -9,76 +9,76 @@
     margin-left:24px;
 }
 
-.firstVerticalLine1{
+.VerticalLine1{
     position:absolute;
     left:0px;
     margin-top:48px;
 }
 
-.firstVerticalLine2{
+.VerticalLine2{
     position:absolute;
     left:0px;
     margin-top:96px;
 }
 
-.firstVerticalLine3{
+.VerticalLine3{
     position:absolute;
     left:0px;
     margin-top:144px;
 }
 
 
-.secondVerticlaLine1{
+.VerticalLine5{
     position:absolute;
     left:48px;
     margin-top:48px;
 }
 
-.secondVerticlaLine2{
+.VerticalLine6{
     position:absolute;
     left:48px;
     margin-top:96px;
 }
 
-.secondVerticlaLine3{
+.VerticalLine7{
     position:absolute;
     left:48px;
     margin-top:144px;
 }
 
 
-.thridVerticalLine1{
+.VerticalLine9{
     position:absolute;
     left:96px;
     margin-top:48px;
 }
 
-.thridVerticalLine2{
+.VerticalLine10{
     position:absolute;
     left:96px;
     margin-top:96px;
 }
 
-.thridVerticalLine3{
+.VerticalLine11{
     position:absolute;
     left:96px;
     margin-top:144px;
 }
 
 
-.fourthVerticalLine1{
+.VerticalLine13{
     position:absolute;
     left:144px;
     margin-top:48px;
 }
 
-.fourthVerticalLine2{
+.VerticalLine14{
     position:absolute;
     left:144px;
     margin-top:96px;
 }
 
-.fourthVerticalLine3{
+.VerticalLine15{
     position:absolute;
     left:144px;
     margin-top:144px;
