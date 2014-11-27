@@ -4,19 +4,24 @@ window.onload = function(){
     var picArray = [];
     var playboard = document.getElementById("playboard")
     var i;
+    var PairsFound = 0;
+    var AmountofPairs = 0;
+    var check = 0;
+    var counter = 0;
     var Ids = [];
-    var j = 0;
+    var Resultbox = document.getElementById("ShowBox");
     var TileArray = [];
     var EightTiles = document.getElementById("4x2");
     var SixteenTiles = document.getElementById("4x4");
     
     for (i = 0; i < 16; i += 1)
     {
+        TileArray[i] = document.createElement("a");         //måste ha a taggar runt om så jag kan tabba igenom hela saken.
         TileArray[i] = document.createElement("img");
         Ids[i] = i;
         TileArray[i].src = "pics/0.png";
     }
-    
+    console.log(TileArray)
     
     for (i = 1; i < 16; i +=1)
     {
@@ -42,7 +47,7 @@ window.onload = function(){
                  // ger undefined is not a function.
     TileArray[0].addEventListener("click", function(e){
         TileArray[0].src = "pics/1.png"; 
-    })      // varför skrer funktionen direkt?
+    })      // varför sker funktionen direkt?
     
     
     
@@ -59,10 +64,13 @@ window.onload = function(){
     
     EightTiles.addEventListener("click", function(e){
         
-        
+        check = 0;
+        counter = 0;
+        PairsFound = 0;
+        Resultbox.innerHTML ="Lycka till!";
         resetAllTiles();
         resetIds();
-        console.log(Ids);
+        AmountofPairs = 4;
         
         if (playboard.childNodes.length > 9)
         {
@@ -85,9 +93,13 @@ window.onload = function(){
     
     SixteenTiles.addEventListener("click", function(e) {
         
+        check = 0;
+        counter = 0;
+        PairsFound = 0;
+        Resultbox.innerHTML ="Lycka till!";
         resetAllTiles();
         resetIds()
-        console.log(Ids);
+        AmountofPairs = 8;
         
         picArray = RandomGenerator.getPictureArray(4,4);
         
@@ -103,8 +115,7 @@ window.onload = function(){
     })
     
     
-    var check = 0;
-    var counter = 0;
+   
     var a = 0;
     var b = 0;
     
@@ -143,6 +154,11 @@ window.onload = function(){
         
         if (picArray[a] === picArray[b])
         {
+            PairsFound += 1;
+            if (PairsFound === AmountofPairs)
+            {
+                alert("GRATTIS!")
+            }
             console.log("WIN!") //lägg till ett + för antal par man hittar av antalet som finns kvar att hitta.
         }
         
@@ -164,7 +180,14 @@ window.onload = function(){
                     Ids[i] -=1;
                 }
             }, 1000);
-            
+        }
+        if (PairsFound < AmountofPairs)
+        {
+            Resultbox.innerHTML = "Du har hittat "+PairsFound+" av "+AmountofPairs+" och har gjort "+counter+" försök."
+        }
+        else
+        {
+            Resultbox.innerHTML = "Du har hittat alla par! Det tog dig "+counter+" försök.";
         }
     }
     
