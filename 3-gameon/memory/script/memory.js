@@ -2,6 +2,7 @@
 
 var memory = {
     
+    ShowBox: document.getElementById("ShowBox"),
     Tries: 0,
     PairsFound: 0,
     Ids: 0,
@@ -11,6 +12,7 @@ var memory = {
     TurnedOver: 0,
     rows: 4,
     cols: 4,
+    AmountofPairs: 8,
     
     init:function() {
         memory.picArray = RandomGenerator.getPictureArray(memory.rows, memory.cols)
@@ -65,12 +67,17 @@ var memory = {
        
            if (memory.TurnedOver === 2)
            {
+               memory.Tries += 1;
                memory.check = false;
                memory.TurnedOver = 0;
                var secondClick = this;
                if (memory.firstClick.img.className === secondClick.img.className)
                {
-                   
+                   memory.PairsFound += 1;
+                   if (memory.PairsFound === memory.AmountofPairs)
+                   {
+                       memory.ShowBox.innerHTML = "Du har vunnit! Det tog dig "+memory.Tries+" försök. Tryck F5 för ny omgång";
+                   }
                    memory.check = true;
                }
                else
@@ -83,6 +90,10 @@ var memory = {
                        secondClick.addEventListener("click", memory.onClick);
                        memory.check = true;
                    }, 1000)
+               }
+               if (memory.PairsFound < memory.AmountofPairs)
+               {
+               memory.ShowBox.innerHTML = "Du har hittat "+memory.PairsFound+" av "+memory.picArray.length/2+". "+memory.Tries+" försök gjorde hittills."
                }
                
            }
