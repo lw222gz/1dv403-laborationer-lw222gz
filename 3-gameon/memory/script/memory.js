@@ -2,7 +2,7 @@
 
 var memory = {
     
-    ShowBox: document.getElementById("ShowBox"),
+    ShowBox:null,
     Tries: 0,
     PairsFound: 0,
     Ids: 0,
@@ -12,9 +12,9 @@ var memory = {
     TurnedOver: 0,
     rows: 4,
     cols: 4,
-    AmountofPairs: 8,
     
     init:function() {
+        memory.ShowBox = document.getElementById("ShowBox");
         memory.picArray = RandomGenerator.getPictureArray(memory.rows, memory.cols)
         memory.createBoard();
     },
@@ -31,19 +31,19 @@ var memory = {
             table.appendChild(TableRow);
             for (j = 0; j < memory.cols; j += 1)
             {
-                var aTag = document.createElement("a")
+                var aTag = document.createElement("a");
                 var Cell = document.createElement("td");
                 var img = document.createElement("img");
                 
-                aTag.href = "#"
+                aTag.href = "#";
                 
-                img.src = "pics/0.png"
-                img.className = "pics/"+memory.picArray[memory.Ids]+".png"
+                img.src = "pics/0.png";
+                img.className = "pics/"+memory.picArray[memory.Ids]+".png";
                 aTag.img = img;
                 
                 memory.Ids += 1;
                 
-                aTag.addEventListener("click", memory.onClick)
+                aTag.addEventListener("click", memory.onClick);
                 
                 aTag.appendChild(img);
                 Cell.appendChild(aTag);
@@ -74,7 +74,7 @@ var memory = {
                if (memory.firstClick.img.className === secondClick.img.className)
                {
                    memory.PairsFound += 1;
-                   if (memory.PairsFound === memory.AmountofPairs)
+                   if (memory.PairsFound === (memory.picArray.length/2))
                    {
                        memory.ShowBox.innerHTML = "Du har vunnit! Det tog dig "+memory.Tries+" försök. Tryck F5 för ny omgång";
                    }
@@ -89,11 +89,11 @@ var memory = {
                        memory.firstClick.addEventListener("click", memory.onClick);
                        secondClick.addEventListener("click", memory.onClick);
                        memory.check = true;
-                   }, 1000)
+                   }, 1000);
                }
-               if (memory.PairsFound < memory.AmountofPairs)
+               if (memory.PairsFound < (memory.picArray.length/2))
                {
-               memory.ShowBox.innerHTML = "Du har hittat "+memory.PairsFound+" av "+memory.picArray.length/2+". "+memory.Tries+" försök gjorde hittills."
+                    memory.ShowBox.innerHTML = "Du har hittat "+memory.PairsFound+" av "+memory.picArray.length/2+" par. "+memory.Tries+" försök gjorde hittills.";
                }
                
            }
@@ -102,7 +102,6 @@ var memory = {
        {
             memory.firstClick = this;
        }
-       
     },
 }  
 

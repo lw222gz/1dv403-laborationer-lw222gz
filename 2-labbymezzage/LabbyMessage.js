@@ -88,18 +88,7 @@ window.onload = function(){
                 var year = messages[index].getDate().getFullYear();
                 var month = messages[index].getDate().getMonth();
                 var day = messages[index].getDate().getDate();
-                var Hour = messages[index].getDate().getHours();
-                var Minutes = messages[index].getDate().getMinutes();
-                var Seconds = messages[index].getDate().getSeconds();
-                if (Minutes < 10)
-                {
-                    Minutes = "0"+Minutes;       
-                }
-                if (Seconds < 10)
-                {
-                    Seconds = "0"+Seconds;
-                }
-            alert("Inlägget skapades den "+day+"/"+month+" år "+year+ " klockan " +Hour+":"+Minutes+":"+Seconds)
+                alert("Inlägget skapades den "+day+"/"+month+" år "+year+ " klockan " +messages[index].getDateText())
         })
         
         var TimeShow = document.createElement("div");
