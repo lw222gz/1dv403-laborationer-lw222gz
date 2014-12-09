@@ -3,8 +3,35 @@
 var quiz = {
     Tries: 0,
     tryArr: [],
+    serverObj: null,
+    
     init:function(){
+        var input = document.getElementById("svar");
         quiz.renderQuestion("http://vhost3.lnu.se:20080/question/1")
+        document.getElementById("button").addEventListener("click", function(e){
+                    if (input.value !== "")
+                    {
+                        quiz.answerQuestion(input.value, quiz.serverObj.nextURL)
+                    }
+                    else
+                    {
+                        e.preventDefault();
+                    }
+                })
+                
+        input.addEventListener("keydown", function(e) {
+                    if (e.keyCode === 13)
+                    {
+                        if (input.value !== "")
+                        {
+                            quiz.answerQuestion(input.value, quiz.serverObj.nextURL)
+                        }
+                        else
+                        {
+                            e.preventDefault();
+                        }
+                    }
+                })
     },    
         
     renderQuestion: function(url){
@@ -17,42 +44,20 @@ var quiz = {
         XHR.onreadystatechange = function(){ 
             if (XHR.readyState === 4 && XHR.status === 200)
             {
-                var serverObj = JSON.parse(XHR.responseText);
-                serverQuestion.innerHTML = serverObj.question;
-                
-                document.getElementById("button").addEventListener("click", function(e){
-                    if (input.value !== "")
-                    {
-                        quiz.answerQuestion(input.value, serverObj.nextURL)
-                    }
-                    else
-                    {
-                        e.preventDefault();
-                    }
-                })
-                document.getElementById("svar").addEventListener("keydown", function(e) {
-                    if (e.keyCode === 13)
-                    {
-                        if (input.value !== "")
-                        {
-                            quiz.answerQuestion(input.value, serverObj.nextURL)
-                        }
-                        else
-                        {
-                            e.preventDefault();
-                        }
-                    }
-                })
+                quiz.serverObj = JSON.parse(XHR.responseText);
+                serverQuestion.innerHTML = quiz.serverObj.question;
             }
         }
         XHR.open("GET",url , true)
         XHR.send(null)
-        
     },
     
     answerQuestion: function(answer, url){
         var xhr1 = new XMLHttpRequest();
         var i;
+        
+        var status = document.getElementById("questionStatus")
+        
         xhr1.onreadystatechange = function(){
              if (xhr1.readyState === 4)
              {
@@ -64,13 +69,13 @@ var quiz = {
                     {
                         quiz.tryArr.push(quiz.Tries)
                         quiz.renderQuestion(response.nextURL)
-                        document.getElementById("questionStatus").innerHTML = "Rätt svar!"
-                        console.log(quiz.tryArray)
+                        status.innerHTML = "Rätt svar!"
+                        console.log(quiz.tryArr)
                     }
                     else
                     {
-                        
-                        document.getElementById("questionStatus").innerHTML = "Du klara dig! Resultat:"
+                        quiz.tryArr.push(quiz.Tries)
+                        status.innerHTML = "Du klara dig! Resultat:"
                         document.getElementById("button").disabled = true;
                         document.getElementById("svar").value = "";
                         document.getElementById("svar").disabled = true;
@@ -78,7 +83,7 @@ var quiz = {
                         {
                             var pTag = document.createElement("p")
                             pTag.innerHTML = "Fråga "+i+": "+quiz.tryArr[i-1]+" försök"
-                            document.getElementById("questionStatus").appendChild(pTag);
+                            status.appendChild(pTag);
                         }
                     }
                 }
@@ -86,8 +91,8 @@ var quiz = {
                 {
                     quiz.Tries += 1;
                     document.getElementById("svar").value = "";
-                    console.log(quiz.tryArray)
-                    document.getElementById("questionStatus").innerHTML = "Fel svar!"
+                    console.log(quiz.tryArr)
+                    status.innerHTML = "Fel svar!"
                 }
             }
         }
@@ -95,6 +100,7 @@ var quiz = {
         xhr1.open("POST",url , true)
         xhr1.setRequestHeader("Content-type", "application/json")
         xhr1.send(sendAnswer)
+        
     },
 }
 window.onload = quiz.init;
