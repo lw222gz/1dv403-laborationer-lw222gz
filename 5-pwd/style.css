@@ -1,22 +1,23 @@
 #container
 {
     position:fixed;
-    margin:0;
-    margin-top:0;
+    margin-left:10%;
+    margin-right:auto;
     padding:0;
-    width:100%;
-    height:100%;
+    width:1080px;        /*om satt till 100% så buggar inte att flytta diven, varför?*/ 
+    height:650px;           
     background-image:url(Pics/default.jpg);
-    background-size:100%;
+    background-size:inherit;
     background-repeat:no-repeat;
 }
 
 body {
-    margin:0;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:black;
 }
 
 footer {
-    
     width:100%;
     height:75px;
     position:absolute;
@@ -30,24 +31,38 @@ footer {
     margin-left:10px;
     width:54px;
     height:54px;
+    -webkit-transition: .15s linear;
+	-moz-transition: 152 linear;
+	transition: .15s linear;
+}
+
+#PicFooter:hover{
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    transform: scale(1.4);
 }
 
 #PicWindow{
     border:1px solid black;
     display:block;
-    width:660px;
+    width:345px;
     height:515px;
     background-color:#AB5531;
 }
 
-#pictureBox{
-    width:200px;
-    height:80px;
+.pictureBox{
+    background-position:center;
+    background-repeat:no-repeat;
+    padding:5px;
+    padding-bottom:0;
+    display:block;
+    margin-top:10px;
+    margin-left:10px;
     background-color:#798580;
 }
 
 .PicChoices{
-    width:640px;
+    width:auto;
     height:400px;
     background-color:white;
     margin:auto;
@@ -62,7 +77,7 @@ footer {
     background-position:center;
     position:relative;
     top:-1px;
-    left:611px;
+    left:300px;
     margin-bottom:30px;
     
     width:36px;
@@ -85,6 +100,23 @@ footer {
     text-indent:18px;
     left:0;
     top:2px;
+    
+}
+
+.imgPosition{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.gifEdits{
+    width:16px;
+    height:16px;
+    margin-top:4px;
+}
+
+.pictureBox img {
+    margin-left:auto;
+    margin-right:auto;
     
 }
 

@@ -2,43 +2,46 @@
 
 var desktop = {
     picArray: [],
-    container: null,
+    main: null,
+    picChoices: null,
+    container:null,
+    picWindow: null,
     
     init:function(){
+        desktop.main = document.getElementById("main");
         desktop.container = document.getElementById("container");
-        //desktop.container.style.backgroundImage = "url(Pics/PictureFolder.png)" <<<<---- hur man byter bakgrundsbilden för containerns
         var windowStatus = document.createElement("p");
-        var picWindow = document.createElement("div");
+        desktop.picWindow = document.createElement("div");
         
-        picWindow.id = "PicWindow";           //  = document.getElementById("PicWindow");//.addEventListener("mousedown", desktop.mousedown)
+        desktop.picWindow.id = "PicWindow";           //  = document.getElementById("PicWindow");//.addEventListener("mousedown", desktop.mousedown)
         //iconPicture.src = "Pics/PictureFolder.png";
         //iconPicture.className = ""
         windowStatus.className = "windowStatus";
         windowStatus.innerHTML = "Pictures"
       
         var closeWindow = document.createElement("div");
-        var picChoices = document.createElement("div");
+        desktop.picChoices = document.createElement("div");
         
         closeWindow.className = "CloseWindow";
-        picChoices.className = "PicChoices"; 
+        desktop.picChoices.className = "PicChoices"; 
         
-        picWindow.appendChild(closeWindow);
-        picWindow.appendChild(windowStatus);
+        desktop.picWindow.appendChild(closeWindow);
+        desktop.picWindow.appendChild(windowStatus);
         
-        picWindow.appendChild(picChoices);
+        desktop.picWindow.appendChild(desktop.picChoices);
         
         
         
-        picWindow.addEventListener("mousedown", desktop.mousedown);
+        desktop.picWindow.addEventListener("mousedown", desktop.mousedown);
         window.addEventListener('mouseup', desktop.mouseup);
         
         closeWindow.addEventListener("click", function(e){
-            desktop.removeDiv(picWindow);
+            desktop.removeDiv(desktop.picWindow);
         })
         
         document.getElementById("PicFooter").addEventListener("click", function(e){
-            //picWindow.style.visibility = "visible";
-            desktop.container.appendChild(picWindow);
+            
+            desktop.main.appendChild(desktop.picWindow);
             
             desktop.picutreFunction();
         })
@@ -46,15 +49,26 @@ var desktop = {
     
     picutreFunction: function(){
         
-        
+        var windowLoader = document.createElement("p");
+        windowLoader.style.textIndent = "10px";
+        var gif = document.createElement("img");
         
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
             if(xhr.readyState === 4 && xhr.status === 200)// Lägga till laddnings ikonen när readystate !== ifrån 4?
             {
+                windowLoader.innerHTML = ""
                 desktop.picArray = JSON.parse(xhr.responseText);
                 console.log(desktop.picArray)
                 desktop.displayPicutres();
+            }
+            else{
+                
+                gif.src = "Pics/ajax-loader.gif";
+                gif.className = "gifEdits";
+                windowLoader.innerHTML = "Laddar "
+                windowLoader.appendChild(gif);
+                desktop.picWindow.appendChild(windowLoader);
             }
             
         }
@@ -63,11 +77,61 @@ var desktop = {
     },
     
     displayPicutres: function(){
+        
+        
+        var table = document.createElement("table");
         var i;
-        for (i = 0; i < desktop.picArray; i += 1)
+        var j;
+        var Id = 0;
+        var maxWidth = 0;
+        var maxHeight = 0;
+        
+        for (i = 0; i < desktop.picArray.length/3; i+= 1)
         {
-            //desktop.picArray[i].ur
+            var TableRow = document.createElement("tr");
+            table.appendChild(TableRow);
+            for (j = 0; j < 3; j += 1)
+            {
+                var box = document.createElement("div");
+                var aTag = document.createElement("a");
+                var Cell = document.createElement("td");
+                var img = document.createElement("img");
+                
+                
+                box.className = "pictureBox";
+                
+                aTag.href = "#";
+                //img.className = "imgPosition";
+                img.src = desktop.picArray[Id].thumbURL;
+                
+                if (desktop.picArray[Id].thumbWidth > maxWidth)
+                {
+                    box.style.width = desktop.picArray[Id].thumbWidth;
+                }
+                if (desktop.picArray[Id].thumbHeight > maxHeight)
+                {
+                    box.style.height = desktop.picArray[Id].thumbHeight;
+                }
+                
+                
+                aTag.url = desktop.picArray[Id].URL;
+                console.log(aTag.url)
+               
+                
+                aTag.addEventListener("click", desktop.changeBackground);
+                
+                aTag.appendChild(img);
+                box.appendChild(aTag)
+                Cell.appendChild(box);
+                TableRow.appendChild(Cell);
+                
+                Id += 1;
+            }
+            table.appendChild(TableRow);
         }
+        
+        desktop.picChoices.appendChild(table);
+        
     },
     
     mouseup: function(){
@@ -86,8 +150,13 @@ var desktop = {
     },
     
     removeDiv: function(div){
-        desktop.container.removeChild(div);
+        desktop.main.removeChild(div);
     },
+    
+    changeBackground: function(){
+        desktop.container.style.backgroundRepeat = "Repeat";
+        desktop.container.style.backgroundImage = "url("+this.url+")";
+    }
 }
 
 window.onload = desktop.init;
