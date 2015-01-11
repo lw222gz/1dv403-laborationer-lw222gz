@@ -1,11 +1,11 @@
 #container
 {
     position:fixed;
-    margin-left:10%;
-    margin-right:auto;
+    margin-top:6%;
+    margin-left:80px;
     padding:0;
-    width:1080px;        /*om satt till 100% så buggar inte att flytta diven, varför?*/ 
-    height:650px;           
+    width:1520px;        /*om satt till 100% så buggar inte att flytta diven, varför?*/ 
+    height:750px;           
     background-image:url(Pics/default.jpg);
     background-size:inherit;
     background-repeat:no-repeat;
@@ -18,7 +18,7 @@ body {
 }
 
 footer {
-    width:100%;
+    width:1520px;
     height:75px;
     position:absolute;
     bottom:0;
@@ -27,6 +27,11 @@ footer {
 }
 
 #PicFooter{
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     margin-top:10px;
     margin-left:10px;
     width:54px;
@@ -43,21 +48,57 @@ footer {
 }
 
 #PicWindow{
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    position:absolute;
+    left:0;
+    top:0;
     border:1px solid black;
     display:block;
     width:345px;
     height:515px;
+    border-radius:10px;
+    /*background: linear-gradient(red, blue);*/
+    
+}
+
+.PicWindowTop
+{
+    border-bottom:1px solid black;
+    border-top-right-radius:10px;
+    border-top-left-radius:10px;
+    position:absolute;
+    top:0;
+    width:345px;
+    height:48px;
     background-color:#AB5531;
+}
+
+.PicWindowBot
+{
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    position:absolute;
+    bottom:0;
+    width:345px;
+    height:66px;
+    background-color:#AB5531;
+    border-top:1px solid black;
 }
 
 .pictureBox{
     background-position:center;
     background-repeat:no-repeat;
     padding:5px;
-    padding-bottom:0;
-    display:block;
+    padding-bottom:5px;
+    display:inline-block;
     margin-top:10px;
     margin-left:10px;
+    border-radius:5px;
     background-color:#798580;
 }
 
@@ -95,9 +136,9 @@ footer {
     background-image:url(Pics/PictureFolder.png);
     background-repeat:no-repeat;
     background-size:16px 16px;
-    margin-left:2px;
+    margin-left:4px;
     position:absolute;
-    text-indent:18px;
+    text-indent:20px;
     left:0;
     top:2px;
     
@@ -114,7 +155,8 @@ footer {
     margin-top:4px;
 }
 
-.pictureBox img {
+.pictureBox a img {
+    display:block;
     margin-left:auto;
     margin-right:auto;
     

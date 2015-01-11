@@ -1,0 +1,51 @@
+#container
+{
+    position:fixed;
+    margin-top:6%;
+    margin-left:200px;
+    padding:0;
+    width:1520px;        /*om satt till 100% så buggar inte att flytta diven, varför?*/ 
+    height:750px;           
+    background-image:url(Pics/default.jpg);
+    background-size:inherit;
+    background-repeat:no-repeat;
+}
+
+body {
+    margin-left:auto;
+    margin-right:auto;
+    background-color:black;
+}
+
+footer {
+    width:1520px;
+    height:75px;
+    position:absolute;
+    bottom:0;
+    border-top:5px solid black;
+    background-color:rgba(0, 0, 0, 0.4);
+}
+
+footer img{
+    margin-top:10px;
+    margin-left:10px;
+    width:54px;
+    height:54px;
+    -webkit-transition: .15s linear;
+	-moz-transition: 152 linear;
+	transition: .15s linear;
+}
+
+footer img:hover{
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    transform: scale(1.4);
+}
+
+.whiteBox{
+    margin-top:0px;
+    margin-left:0px;
+    width:100px;
+    height:100px;
+    background-color:white;
+}
